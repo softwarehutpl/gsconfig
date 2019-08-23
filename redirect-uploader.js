@@ -105,9 +105,7 @@ async function googleSpreadSheetApiRun(client, object) {
 
         function createNewWebconfigFile(){
             const rules = redirectsObject.rules.rule;
-            console.log(rules);
             webConfigObject.configuration['system.webServer']['rewrite'].rules.rule.unshift(...(rules.length ? rules : [rules]));
-            console.log(convert.js2xml(webConfigObject, {compact:true, spaces: 2}));
             return convert.js2xml(webConfigObject, {compact:true, spaces: 2});
         }
 
