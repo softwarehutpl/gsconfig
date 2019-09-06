@@ -99,7 +99,7 @@ async function googleSpreadSheetApiRun(client, object) {
             return rules;
         }
 
-        const webConfigString = fs.readFileSync(object.webconfigFileDirectory,'utf-8');
+        const webConfigString = fs.readFileSync(object.webconfigFilePrimaryDirectory,'utf-8');
         const webConfigObject = convert.xml2js(webConfigString, {compact:true});
         const redirectsObject = convert.xml2js(createRedirectConfigRules(), {compact:true});
 
@@ -109,7 +109,7 @@ async function googleSpreadSheetApiRun(client, object) {
             return convert.js2xml(webConfigObject, {compact:true, spaces: 2});
         }
 
-        fs.writeFileSync(ensureDirectoryExistence(object.webconfigFileDirectory),
+        fs.writeFileSync(ensureDirectoryExistence(object.webconfigFileTargetDirectory),
             createNewWebconfigFile(),
             {flag: 'w'},
             function (err) {
