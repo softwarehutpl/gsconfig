@@ -22,8 +22,8 @@ program
     .option('-e, --email [email]', 'Sets spreadsheet client email' )
     .option('-i, --id [id]' , 'Sets spreadsheet id')
     .option('-r, --range [range]', 'Sets spreadsheet range')
-    .option('-d, --primary-dir [dir]', 'Sets primary webconfig directory')
-    .option('-d, --target-dir [dir]', 'Sets target webconfig directory')
+    .option('-pd, --primary-dir [primaryDir]', 'Sets primary webconfig directory')
+    .option('-td, --target-dir [targetDir]', 'Sets target webconfig directory')
     .option('-s, --set-keyfile-dir [keyfile]', 'Sets google keys file directory')
     .parse(process.argv);
 
@@ -40,10 +40,10 @@ if (program.setKeyfileDir){
         object.googleSpreadsheetPrivateRange = program.range;
     }
     if (!object.webconfigFilePrimaryDirectory) {
-        object.webconfigFilePrimaryDirectory = program.primary_dir;
+        object.webconfigFilePrimaryDirectory = program.primaryDir;
     }
     if (!object.webconfigFileTargetDirectory) {
-        object.webconfigFileTargetDirectory = program.target_dir;
+        object.webconfigFileTargetDirectory = program.targetDir;
     }
 } else {
     if (!object.googleSpreadsheetClientEmail) {
@@ -59,10 +59,10 @@ if (program.setKeyfileDir){
         object.googleSpreadsheetPrivateRange = program.range;
     }
     if (!object.webconfigFilePrimaryDirectory) {
-        object.webconfigFilePrimaryDirectory = program.primary_dir;
+        object.webconfigFilePrimaryDirectory = program.primaryDir;
     }
     if (!object.webconfigFileTargetDirectory) {
-        object.webconfigFileTargetDirectory = program.target_dir;
+        object.webconfigFileTargetDirectory = program.targetDir;
     }
 }
 
