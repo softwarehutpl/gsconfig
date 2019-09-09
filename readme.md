@@ -1,5 +1,5 @@
 
-#gsConfig
+# gsConfig
 
 Move your http 301 redirect rules from `web.config` to *Google Spredsheet*
 
