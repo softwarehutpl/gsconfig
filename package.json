@@ -9,6 +9,9 @@
   },
   "author": "",
   "license": "ISC",
+  "bin": {
+    "gsconfig": "./index.js"
+  },
   "dependencies": {
     "@types/node": "^10.12.12",
     "commander": "^2.20.0",
