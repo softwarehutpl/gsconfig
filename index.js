@@ -12,7 +12,8 @@ const object = {
     googleSpreadsheetPrivateKey : process.env.GOOGLE_SPREADSHEET_PRIVATE_KEY,
     googleSpreadsheetPrivateID : process.env.GOOGLE_SPREADSHEET_ID,
     googleSpreadsheetPrivateRange : process.env.GOOGLE_SPREADSHEET_RANGE,
-    webconfigFileDirectory : process.env.WEBCONFIG_FILE_DIRECTORY
+    webconfigFilePrimaryDirectory : process.env.WEBCONFIG_FILE_PRIMARY_DIRECTORY,
+    webconfigFileTargetDirectory : process.env.WEBCONFIG_FILE_TARGET_DIRECTORY,
 };
 
 program
@@ -21,7 +22,8 @@ program
     .option('-e, --email [email]', 'Sets spreadsheet client email' )
     .option('-i, --id [id]' , 'Sets spreadsheet id')
     .option('-r, --range [range]', 'Sets spreadsheet range')
-    .option('-d, --dir [dir]', 'Sets webconfig directory')
+    .option('-d, --primary-dir [dir]', 'Sets primary webconfig directory')
+    .option('-d, --target-dir [dir]', 'Sets target webconfig directory')
     .option('-s, --set-keyfile-dir [keyfile]', 'Sets google keys file directory')
     .parse(process.argv);
 
@@ -37,8 +39,11 @@ if (program.setKeyfileDir){
     if (!object.googleSpreadsheetPrivateRange) {
         object.googleSpreadsheetPrivateRange = program.range;
     }
-    if (!object.WebconfigBuildDirectory) {
-        object.WebconfigBuildDirectory = program.dir;
+    if (!object.webconfigFilePrimaryDirectory) {
+        object.webconfigFilePrimaryDirectory = program.primary_dir;
+    }
+    if (!object.webconfigFileTargetDirectory) {
+        object.webconfigFileTargetDirectory = program.target_dir;
     }
 } else {
     if (!object.googleSpreadsheetClientEmail) {
@@ -53,12 +58,15 @@ if (program.setKeyfileDir){
     if (!object.googleSpreadsheetPrivateRange) {
         object.googleSpreadsheetPrivateRange = program.range;
     }
-    if (!object.webconfigFileDirectory) {
-        object.webconfigFileDirectory = program.dir;
+    if (!object.webconfigFilePrimaryDirectory) {
+        object.webconfigFilePrimaryDirectory = program.primary_dir;
+    }
+    if (!object.webconfigFileTargetDirectory) {
+        object.webconfigFileTargetDirectory = program.target_dir;
     }
 }
 
-if (object.googleSpreadsheetClientEmail && object.googleSpreadsheetPrivateKey && object.googleSpreadsheetPrivateID && object.googleSpreadsheetPrivateRange && object.webconfigFileDirectory){
+if (object.googleSpreadsheetClientEmail && object.googleSpreadsheetPrivateKey && object.googleSpreadsheetPrivateID && object.googleSpreadsheetPrivateRange && object.webconfigFilePrimaryDirectory && object.webconfigFileTargetDirectory){
 
     console.log('All params are set, running redirect uploader');
     redirectUploader.redirectRun(object);
@@ -76,8 +84,11 @@ if (object.googleSpreadsheetClientEmail && object.googleSpreadsheetPrivateKey &&
     if (!object.googleSpreadsheetPrivateRange) {
         console.log('Spreadsheet Range is not set');
     }
-    if (!object.webconfigFileDirectory) {
-        console.log('Webconfig File Directory is not set');
+    if (!object.webconfigFilePrimaryDirectory) {
+        console.log('Webconfig File Prmiary Directory is not set');
+    }
+    if (!object.webconfigFileTargetDirectory) {
+        console.log('Webconfig File Target Directory is not set');
     }
     console.log('To set params see readme or -h for help');
 }
