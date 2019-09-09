@@ -20,7 +20,7 @@ or globaly
 
 To use the package, you need to provide data to connect with Google Sheets API and paths to primary and target web.config file.
 
-####JSON file
+#### JSON file
 You can specify some data in JSON file
 
 ```
@@ -34,13 +34,13 @@ and run script
 gsconfig --id="googleSpreadsheetPrivateID"  --range="googleSpreadsheetPrivateRange" --primary-dir="primaryWebconfigDirectory/web.config" --target-dir="targetWebconfigDirectory/web.config"  --set-keyfile-dir="keyfileDirectory/keys.json"
 ```
 
-####command options
+#### command options
 You can provide all data in command options and run script
 ```
 gsconfig --key="googleSpreadsheetPrivateKey" --email="googleSpreadsheetClientEmail" --id="googleSpreadsheetPrivateID"  --range="googleSpreadsheetPrivateRange" --primary-dir="./primaryWebconfigDirectory" --target-dir="./targetWebconfigDirectory" 
 ```
 
-####environment variables
+#### environment variables
 Or provide data in environment variables and run
 ```
 gsconfig
