@@ -9,6 +9,7 @@ const redirectUploader = require('./redirect-uploader');
 
 const defaultPrimaryWebConfigDir = './public/web.config';
 const defaultTargetWebConfigDir = './build/web.config';
+const defaultSpreadsheetRange = 'Arkusz1!A2:B';
 
 const object = {
     googleSpreadsheetClientEmail : process.env.GOOGLE_SPREADSHEET_CLIENT_EMAIL,
@@ -20,7 +21,7 @@ const object = {
 };
 
 program
-    .version('0.1.0')
+    .version('1.2.0')
     .option('-k, --key [key]', 'Sets spreadsheet private key')
     .option('-e, --email [email]', 'Sets spreadsheet client email' )
     .option('-i, --id [id]' , 'Sets spreadsheet id')
@@ -50,7 +51,7 @@ if (!object.googleSpreadsheetPrivateID) {
     object.googleSpreadsheetPrivateID = program.id;
 }
 if (!object.googleSpreadsheetPrivateRange) {
-    object.googleSpreadsheetPrivateRange = program.range;
+    object.googleSpreadsheetPrivateRange = program.range || defaultSpreadsheetRange;
 }
 if (!object.webconfigFilePrimaryDirectory) {
     object.webconfigFilePrimaryDirectory = program.primaryDir || defaultPrimaryWebConfigDir;
@@ -73,9 +74,6 @@ if (object.googleSpreadsheetClientEmail && object.googleSpreadsheetPrivateKey &&
     }
     if (!object.googleSpreadsheetPrivateID) {
         console.log('Private ID is not set');
-    }
-    if (!object.googleSpreadsheetPrivateRange) {
-        console.log('Spreadsheet Range is not set');
     }
     console.log('To set params see readme or -h for help');
 }
