@@ -90,7 +90,7 @@ async function googleSpreadSheetApiRun(client, object) {
                 if(isValidRule) {
                     rules +=
                         `<rule name="${escapeInvalidXMLCharacters(uploadedSpreadSheetDataToSetChecked[i][0])}">
-                        <match url="${escapeInvalidXMLCharacters(uploadedSpreadSheetDataToSetChecked[i][0])}"/>
+                        <match url="${escapeInvalidXMLCharacters(uploadedSpreadSheetDataToSetChecked[i][0])}(/?)$"/>
                         <action type="Redirect" url="${escapeInvalidXMLCharacters(uploadedSpreadSheetDataToSetChecked[i][1])}"/>
                     </rule>`
                 }
