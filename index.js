@@ -21,7 +21,7 @@ const object = {
 };
 
 program
-    .version('1.2.0')
+    .version('1.2.1')
     .option('-k, --key [key]', 'Sets spreadsheet private key')
     .option('-e, --email [email]', 'Sets spreadsheet client email' )
     .option('-i, --id [id]' , 'Sets spreadsheet id')
